@@ -6,7 +6,7 @@ A production-ready, browser-based PDF toolkit. All processing happens **client-s
 
 | Tool | Description |
 |------|-------------|
-| Edit PDF | Smart inline text editing with font preservation via raw PDF stream parsing |
+| Edit PDF | Seamless inline text editing with real-time preview — edit PDFs like a document editor with live text rendering and original font preservation |
 | Merge PDF | Combine multiple PDFs with drag-and-drop reordering |
 | Split PDF | Extract pages or ranges; download as ZIP |
 | Compress PDF | Reduce file size with metadata removal and object streams |
@@ -142,14 +142,14 @@ pdfdock/
 **Goal:** Visual editor built on top of the parser.
 
 - `/app/edit-pdf/page.tsx` — file upload, canvas render, click-to-edit
-- `PDFCanvas.tsx` — renders PDF with pdfjs-dist; maps click coordinates to text blocks
-- `TextEditor.tsx` — inline editing overlay at click position
+- `PDFCanvas.tsx` — renders PDF with pdfjs-dist; invisible hit-regions with seamless inline editing
+- `TextEditor.tsx` — borderless inline input with font approximation; live preview on commit
 - `EditorToolbar.tsx` — font selector (PDF fonts only), size, alignment, color
 - `FontPreserver.tsx` — calls `preserveFont()` and triggers download
 - Supabase usage tracking on download
 - Warning displayed when font cannot be preserved
 
-**Success criteria:** Click text → edit → download; original fonts preserved ~90 % of the time.
+**Success criteria:** Click text → cursor appears in-place → type → live preview shows edits immediately → download with original fonts preserved ~90 % of the time.
 
 ---
 
